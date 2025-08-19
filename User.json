@@ -1,0 +1,15 @@
+{
+"personal information"   : {
+        "id": 1,
+        "name": "Shahzaib",
+        "email":"shahzaibmalik0409@gmail.com"
+    },
+    "education":{
+      "degree":"Bs Computer Science",
+      "university":"The Islamia University of Bahawalpur"
+   },
+   "skills":{
+    "programming Language":["javascript","python","c++","c#"],
+   "library / framework":["React","Material Ui","tailwindcss"]
+    }
+}
