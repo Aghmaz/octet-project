@@ -1,15 +1,34 @@
 {
-"personal information"   : {
+  "profiles": [
+    {
+      "personal information": {
         "id": 1,
         "name": "Shahzaib",
-        "email":"shahzaibmalik0409@gmail.com"
+        "email": "shahzaibmalik0409@gmail.com"
+      },
+      "education": {
+        "degree": "Bs Computer Science",
+        "university": "The Islamia University of Bahawalpur"
+      },
+      "skills": {
+        "programming Language": ["javascript", "python", "c++", "c#"],
+        "library / framework": ["React", "Material Ui", "tailwindcss"]
+      }
     },
-    "education":{
-      "degree":"Bs Computer Science",
-      "university":"The Islamia University of Bahawalpur"
-   },
-   "skills":{
-    "programming Language":["javascript","python","c++","c#"],
-   "library / framework":["React","Material Ui","tailwindcss"]
+    {
+      "personal information": {
+        "id": 2,
+        "name": "Muhammad Huzaifa Shoukat",
+        "email": "huzafa459@gmail.com"
+      },
+      "education": {
+        "degree": "Bachelor of Science in Software Engineering",
+        "university": "University of Management and Technology, Lahore"
+      },
+      "skills": {
+        "programming Language": ["JavaScript", "Python", "C++", "Java"],
+        "library / framework": ["React", "Material UI"]
+      }
     }
+  ]
 }
