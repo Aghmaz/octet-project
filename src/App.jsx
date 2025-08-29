@@ -3,13 +3,22 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Login from "./Screens/Login";
+import Signup from "./Screens/Signup";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
+
 
   return (
     <>
-      <Login />
+     
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Signup/>} />
+        <Route path="/login" element={<Login/>} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }

@@ -25,9 +25,9 @@ const Login = () => {
         <h1 className="font-bold text-6xl text-center text-white">
           Build Your Future
         </h1>
-        <p className="text-white font-semibold text-2xl text-center mt-10 w-[90%]">
+        <p className="text-white font-semibold text-2xl text-center mt-10 ">
           Create professional resumes that get you hired with our modern
-          templates and AI-powered suggestions
+          templates and AI-powered suggestionsn
         </p>
         <div className="grid grid-cols-3 gap-10 mt-10">
           <div className="flex flex-col items-center">
