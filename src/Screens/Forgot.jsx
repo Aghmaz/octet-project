@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Security } from "@mui/icons-material";
 import { TextField, InputAdornment, Button, Alert } from "@mui/material";
+import { Person } from "@mui/icons-material";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const Forgot = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Security sx={{ color: "gray" }} />
+                      <Person sx={{ color: "gray" }} />
                     </InputAdornment>
                   ),
                 }}
