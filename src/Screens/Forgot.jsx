@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import { Security } from "@mui/icons-material";
 import { TextField, InputAdornment, Button, Alert } from "@mui/material";
 import { Person } from "@mui/icons-material";
@@ -6,6 +8,14 @@ import { Person } from "@mui/icons-material";
 const Forgot = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const initialValues = {
+    email: "",
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid Email").required("Email Required"),
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,52 +41,64 @@ const Forgot = () => {
         </p>
         <div className="flex justify-center mt-10">
           <div className="w-[40%]">
-            <form onSubmit={handleSubmit}>
-              <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                variant="outlined"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Person sx={{ color: "gray" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "16px",
-                  },
-                }}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                sx={{
-                  marginTop: 6,
-                  paddingY: 2,
-                  borderRadius: 2,
-                  bgcolor: "#30854E",
-                  color: "#fff",
-                  fontWeight: "600",
-                  fontSize: 20,
-                  "&:hover": {
-                    bgcolor: "#246b3b",
-                  },
-                }}
-              >
-                Send Reset Link
-              </Button>
-              {submitted && (
-                <Alert severity="info" sx={{ mt: 2 }}>
-                  If this email exists, a reset link will be sent.
-                </Alert>
+            <Formik
+              initialValues={{ email: "" }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ values, handleChange, touched, errors }) => (
+                <Form>
+                  <TextField
+                    fullWidth
+                    label="Email Address"
+                    name="email"
+                    variant="outlined"
+                    value={values.email} // <-- Formik value
+                    onChange={handleChange} // <-- Formik change handler
+                    error={touched.email && Boolean(errors.email)} // <-- show red border
+                    helperText={touched.email && errors.email} // <-- show error text
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Person sx={{ color: "gray" }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "16px",
+                      },
+                    }}
+                  />
+
+                  <Button
+                    type="submit"
+                    fullWidth
+                    sx={{
+                      marginTop: 6,
+                      paddingY: 2,
+                      borderRadius: 2,
+                      bgcolor: "#30854E",
+                      color: "#fff",
+                      fontWeight: "600",
+                      fontSize: 20,
+                      "&:hover": {
+                        bgcolor: "#246b3b",
+                      },
+                    }}
+                  >
+                    Send Reset Link
+                  </Button>
+
+                  {/* You can keep this success alert if needed */}
+                  {submitted && (
+                    <Alert severity="info" sx={{ mt: 2 }}>
+                      If this email exists, a reset link will be sent.
+                    </Alert>
+                  )}
+                </Form>
               )}
-            </form>
+            </Formik>
           </div>
         </div>
       </div>
