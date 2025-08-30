@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router";
 import Store from "./redux/Store.jsx";
+console.log("shahzaib")
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
