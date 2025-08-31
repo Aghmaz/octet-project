@@ -17,10 +17,9 @@
     "@mui/material": "^7.3.1",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.12",
-<<<<<<< HEAD
+
     "axios": "^1.11.0",
-=======
->>>>>>> 1be3eb11e8415d697d4b5132552eaee274f092bc
+
     "formik": "^2.4.6",
     "lucide-react": "^0.541.0",
     "material-icons": "^1.13.14",
