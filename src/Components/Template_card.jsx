@@ -53,7 +53,7 @@ transform:"scale(1.06)",transition:"all 0.2s ease"
         // height="500"
         image={image}
         alt={title}
-        sx={{ borderRadius: 2 ,height:"200px",backgroundSize:"center" }}
+        sx={{ borderRadius: 2 ,height:"200px",backgroundSize:"cover" }}
       />
 
       {/* Content */}
