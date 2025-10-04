@@ -17,12 +17,13 @@ function App() {
      
     
       <Routes>
-        <Route path="/" element={<Signup/>} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
          <Route path="/" element={<Login />} />
         <Route path="/forgot" element={<Forgot />} />
          <Route path="/template" element={<Template />} />
           <Route path="/editor" element={<Editor />} />
+         
            <Route path="/preview" element={<Preview/>} />
             <Route path="/manage" element={<Manage />} />
       </Routes>
