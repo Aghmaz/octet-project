@@ -25,25 +25,47 @@ const ResumePreview = () => {
       {/* Work */}
       <h4 className="font-semibold mt-4">Work Experience</h4>
       {work.map((w, i) => (
-        <p key={i}>{w.role} at {w.company} ({w.years})</p>
+        <div key={i} className="mb-3 border-l-2 border-blue-500 pl-3">
+          <p><strong>{w.position}</strong> at <strong>{w.company}</strong></p>
+          <p className="text-sm text-gray-600">{w.location}</p>
+          <p className="text-sm text-gray-600">
+            {w.startDate} - {w.isPresent ? 'Present' : w.endDate}
+          </p>
+          <p className="text-sm mt-1">{w.description}</p>
+        </div>
       ))}
 
       {/* Education */}
       <h4 className="font-semibold mt-4">Education</h4>
       {education.map((e, i) => (
-        <p key={i}>{e.degree} - {e.school} ({e.year})</p>
+        <div key={i} className="mb-3 border-l-2 border-green-500 pl-3">
+          <p><strong>{e.degree}</strong></p>
+          <p className="text-sm text-gray-600">{e.institution} - {e.location}</p>
+          <p className="text-sm text-gray-600">
+            {e.startDate} - {e.isPresent ? 'Present' : e.endDate}
+          </p>
+          <p className="text-sm mt-1">{e.description}</p>
+        </div>
       ))}
 
       {/* Skills */}
       <h4 className="font-semibold mt-4">Skills</h4>
-      <ul className="list-disc ml-6">
-        {skills.map((s, i) => <li key={i}>{s}</li>)}
-      </ul>
+      <div className="flex flex-wrap gap-2">
+        {skills.map((s, i) => (
+          <span key={i} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+            {s}
+          </span>
+        ))}
+      </div>
 
       {/* References */}
       <h4 className="font-semibold mt-4">References</h4>
       {references.map((r, i) => (
-        <p key={i}>{r.name} - {r.contact}</p>
+        <div key={i} className="mb-3 border-l-2 border-purple-500 pl-3">
+          <p><strong>{r.name}</strong> - {r.title}</p>
+          <p className="text-sm text-gray-600">{r.company}</p>
+          <p className="text-sm text-gray-600">{r.email}</p>
+        </div>
       ))}
     </div>
   );
