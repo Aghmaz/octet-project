@@ -248,7 +248,7 @@ const Login = ({ onLogin }) => {
               <Button
                 fullWidth
                 variant="outlined"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/signup")}
                 sx={{
                   border: "2px solid #15803d ",
                   color: "green",
