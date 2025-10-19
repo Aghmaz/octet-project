@@ -339,7 +339,7 @@ const navigate = useNavigate();
   
 
     "&.Mui-disabled": {
-      backgroundColor: "#f0fdf4", // Disabled state ka halka green
+      backgroundColor: "#f0fdf4", 
       color: "#737473",
       padding:"20px",
       borderRadius:"8px",

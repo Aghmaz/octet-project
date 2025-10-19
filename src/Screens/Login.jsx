@@ -37,11 +37,11 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="flex justify-center content-center lg:flex-row lg:items-center">
+    <div className="flex  justify-center content-center lg:flex-row  h-screen lg:items-center   ">
       {/* Login Form Section */}
-      <div className="xl:w-[50%] w-[80%] mt-20 xl:mt-0">
-        <div className="flex justify-center">
-          <div className="bg-[#167D3C] p-[10px] rounded-full">
+      <div className="w-full md:w-1/2 mt-50 pt-36">
+        <div className="flex  flex-col   items-center">
+          <div className="bg-[#167D3C] p-[10px] rounded-full  ">
             <Person sx={{ color: "white", fontSize: 60 }} />
           </div>
         </div>
@@ -273,7 +273,7 @@ const Login = ({ onLogin }) => {
       </div>
 
       {/* Right Section */}
-      <div className="w-[50%] hidden xl:flex bg-[#167D3C] flex-col h-screen items-center justify-center ">
+      <div className="w-1/2 md:w-1/2  hidden  bg-[#30854E] md:flex flex-col   min-h-[150vh]  items-center  justify-center ">
         <h1 className="font-bold text-5xl text-center text-white">
           Build Your Future
         </h1>
@@ -281,7 +281,7 @@ const Login = ({ onLogin }) => {
           Create professional resumes that get you hired with our modern <br />
           templates and AI-powered suggestionsn
         </p>
-        <div className="grid grid-cols-3 gap-10 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 w-full max-w-lg">
           <div className="flex flex-col items-center">
             <h3 className="font-bold text-5xl text-center text-white">50K+</h3>
             <p className="text-white mt-4">Resume Created</p>
