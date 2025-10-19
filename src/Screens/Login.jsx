@@ -273,7 +273,7 @@ const Login = ({ onLogin }) => {
       </div>
 
       {/* Right Section */}
-      <div className="w-full md:w-1/2 bg-[#30854E] flex flex-col   min-h-[150vh]  items-center justify-center ">
+      <div className="w-1/2 md:w-1/2  hidden  bg-[#30854E] md:flex flex-col   min-h-[150vh]  items-center  justify-center ">
         <h1 className="font-bold text-5xl text-center text-white">
           Build Your Future
         </h1>
