@@ -13,9 +13,13 @@ import LockIcon from "@mui/icons-material/Lock";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
+import { authAPI } from '../services/api';
+import { Alert, Snackbar } from '@mui/material';
 
 const Login = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     email: "",
@@ -31,13 +35,39 @@ const Login = ({ onLogin }) => {
 
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    onLogin();
-    navigate("/template");
+  const handleLogin = async (values, { setSubmitting }) => {
+    try {
+      setLoading(true);
+      setError('');
+      
+      const response = await authAPI.login({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (response.success) {
+        // Store user data in localStorage
+        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('token', response.token);
+        navigate("/template");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+    } finally {
+      setLoading(false);
+      setSubmitting(false);
+    }
   };
 
   return (
-    <div className="flex  justify-center content-center lg:flex-row  h-screen lg:items-center   ">
+    <>
+      <Snackbar open={!!error} autoHideDuration={6000} onClose={() => setError('')}>
+        <Alert onClose={() => setError('')} severity="error" sx={{ width: '100%' }}>
+          {error}
+        </Alert>
+      </Snackbar>
+      
+      <div className="flex  justify-center content-center lg:flex-row  h-screen lg:items-center   ">
       {/* Login Form Section */}
       <div className="w-full md:w-1/2 mt-50 pt-36">
         <div className="flex  flex-col   items-center">
@@ -57,6 +87,7 @@ const Login = ({ onLogin }) => {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
+              onSubmit={handleLogin}
             >
               {({
                 values,
@@ -210,8 +241,7 @@ const Login = ({ onLogin }) => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    disabled={!isValid || !dirty}
-                    onClick={handleLoginClick}
+                    disabled={!isValid || !dirty || loading}
                     sx={{
                       marginTop: 6,
                       backgroundColor: "#166c36",
@@ -232,7 +262,7 @@ const Login = ({ onLogin }) => {
                       },
                     }}
                   >
-                    Sign In To Your Account
+                    {loading ? 'Signing In...' : 'Sign In To Your Account'}
                   </Button>
                 </Form>
               )}
@@ -297,6 +327,7 @@ const Login = ({ onLogin }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

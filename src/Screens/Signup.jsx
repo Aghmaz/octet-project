@@ -18,6 +18,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { useNavigate } from "react-router-dom";
+import { authAPI } from '../services/api';
+import { Alert, Snackbar } from '@mui/material';
 
 // Password strength checker
 const getPasswordStrength = (password) => {
@@ -83,8 +85,11 @@ const customTextFieldStyles = (formik, fieldName) => ({
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
     fullName: Yup.string()
       .min(3, "At least 3 characters required")
@@ -109,16 +114,50 @@ const navigate = useNavigate();
       confirmPassword: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      // console.log("Form Submitted", values);
-       navigate("/login");
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        setLoading(true);
+        setError('');
+        setSuccess('');
+        
+        const response = await authAPI.signup({
+          fullName: values.fullName,
+          email: values.email,
+          password: values.password,
+        });
+
+        if (response.success) {
+          setSuccess('Account created successfully! Redirecting...');
+          // Store user data in localStorage for easy access
+          localStorage.setItem('user', JSON.stringify(response.user));
+          setTimeout(() => {
+            navigate("/login");
+          }, 1500);
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || 'Signup failed. Please try again.');
+      } finally {
+        setLoading(false);
+        setSubmitting(false);
+      }
     },
   });
 
   const passwordStrength = getPasswordStrength(formik.values.password);
+  
   return (
-    // bg-gradient-to-r from-[#f0fdf4] to-white
     <>
+      <Snackbar open={!!error} autoHideDuration={6000} onClose={() => setError('')}>
+        <Alert onClose={() => setError('')} severity="error" sx={{ width: '100%' }}>
+          {error}
+        </Alert>
+      </Snackbar>
+      <Snackbar open={!!success} autoHideDuration={6000} onClose={() => setSuccess('')}>
+        <Alert onClose={() => setSuccess('')} severity="success" sx={{ width: '100%' }}>
+          {success}
+        </Alert>
+      </Snackbar>
+      
       <div className="flex h-screen ">
   {/* Left Section (Form) */}
   <div className=" min-h-full   flex flex-col items-center justify-items-end  mt-12  w-full md:w-1/2  ">
@@ -328,7 +367,7 @@ const navigate = useNavigate();
   type="submit"
   fullWidth
   variant="contained"
-  disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}
+  disabled={!formik.isValid || formik.isSubmitting || !formik.dirty || loading}
   sx={{
     backgroundColor: "#166c36",
     "&:hover": { backgroundColor: "#155a31" }, color: "white",
@@ -348,7 +387,7 @@ const navigate = useNavigate();
     },
   }}
 >
- Create Your Account
+ {loading ? 'Creating Account...' : 'Create Your Account'}
 </Button>
   <Divider sx={{ my: 3 }}>Already have an account?</Divider>
 

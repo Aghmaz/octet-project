@@ -62,13 +62,13 @@ const EducationForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TextField
               label="Degree"
-              value={item.degree || ''}
+            
               onChange={(e) => handleChange(index, 'degree', e.target.value)}
               fullWidth
             />
             <TextField
               label="Institution"
-              value={item.institution || ''}
+             
               onChange={(e) => handleChange(index, 'institution', e.target.value)}
               fullWidth
             />
@@ -76,8 +76,8 @@ const EducationForm = () => {
 
           <TextField
             label="Location"
-            value={item.location || ''}
-            onChange={(e) => handleChange(index, 'location', e.target.value)}
+            
+            onChange={(e) => handleChange(index,  e.target.value)}
             fullWidth
           />
 
@@ -85,7 +85,7 @@ const EducationForm = () => {
             <TextField
               label="Start Date"
               type="date"
-              value={item.startDate || ''}
+             
               onChange={(e) => handleChange(index, 'startDate', e.target.value)}
               fullWidth
               InputLabelProps={{ shrink: true }}
@@ -93,7 +93,7 @@ const EducationForm = () => {
             <TextField
               label="End Date"
               type="date"
-              value={item.isPresent ? '' : item.endDate || ''}
+       
               onChange={(e) => handleChange(index, 'endDate', e.target.value)}
               fullWidth
               disabled={item.isPresent}
@@ -113,7 +113,7 @@ const EducationForm = () => {
 
           <TextField
             label="Description"
-            value={item.description || ''}
+           
             onChange={(e) => handleChange(index, 'description', e.target.value)}
             fullWidth
             multiline

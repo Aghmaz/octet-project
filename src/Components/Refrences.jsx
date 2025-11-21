@@ -49,13 +49,13 @@ const ReferencesForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TextField
               label="Name"
-              value={item.name || ''}
+            
               onChange={(e) => handleChange(index, 'name', e.target.value)}
               fullWidth
             />
             <TextField
               label="Title"
-              value={item.title || ''}
+              
               onChange={(e) => handleChange(index, 'title', e.target.value)}
               fullWidth
             />
@@ -64,13 +64,13 @@ const ReferencesForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TextField
               label="Company"
-              value={item.company || ''}
+              
               onChange={(e) => handleChange(index, 'company', e.target.value)}
               fullWidth
             />
             <TextField
               label="Email"
-              value={item.email || ''}
+             
               onChange={(e) => handleChange(index, 'email', e.target.value)}
               fullWidth
             />

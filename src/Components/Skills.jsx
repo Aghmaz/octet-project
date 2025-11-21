@@ -36,7 +36,7 @@ const SkillsForm = () => {
       <div className="flex gap-2">
         <TextField
           label="Enter a skill"
-          value={skill}
+          
           onChange={(e) => setSkill(e.target.value)}
           onKeyPress={handleKeyPress}
           fullWidth

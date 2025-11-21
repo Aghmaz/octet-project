@@ -19,6 +19,7 @@ const EditorScreen = () => {
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
+    
   };
 
   return (
@@ -51,9 +52,11 @@ const EditorScreen = () => {
       </div>
 
       {/* Right: Live Preview */}
-      <div className="p-4 border rounded-xl shadow bg-gray-50">
+      <div className="p-4 border rounded-xl shadow bg-gray-50 overflow-auto" style={{ maxHeight: 'calc(100vh - 150px)' }}>
         <h2 className="text-xl font-semibold mb-4">Live Preview</h2>
-        <ResumePreview />
+        <div className="min-h-[297mm]">
+          <ResumePreview />
+        </div>
       </div>
     </div>
     </>

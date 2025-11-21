@@ -1,5 +1,8 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
+import { useSelector } from "react-redux";
+
+
 import { CloudUpload, SaveAlt, Publish } from '@mui/icons-material';
 
 const Stat = ({ value, label }) => (
@@ -12,7 +15,9 @@ const Stat = ({ value, label }) => (
 );
 
 const Manage = () => {
+  const resume = useSelector((state) => state.resume);
   return (
+    
     <div className="min-h-screen bg-white text-black">
       {/* Navbar */}
       <Navbar />
@@ -78,12 +83,13 @@ const Manage = () => {
               Resume Statistics
             </h2>
 
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
-              <Stat value={4} label="Work Experience" />
-              <Stat value={2} label="Education" />
-              <Stat value={6} label="Skills" />
-              <Stat value={2} label="References" />
-            </div>
+           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+  <Stat value={resume.work.length} label="Work Experience" />
+  <Stat value={resume.education.length} label="Education" />
+  <Stat value={resume.skills.length} label="Skills" />
+  <Stat value={resume.references.length} label="References" />
+</div>
+
           </div>
         </section>
       </main>

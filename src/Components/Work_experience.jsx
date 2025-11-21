@@ -62,13 +62,13 @@ const WorkExperienceForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TextField
               label="Position"
-              value={item.position || ''}
+            
               onChange={(e) => handleChange(index, 'position', e.target.value)}
               fullWidth
             />
             <TextField
               label="Company"
-              value={item.company || ''}
+       
               onChange={(e) => handleChange(index, 'company', e.target.value)}
               fullWidth
             />
@@ -76,7 +76,7 @@ const WorkExperienceForm = () => {
 
           <TextField
             label="Location"
-            value={item.location || ''}
+           
             onChange={(e) => handleChange(index, 'location', e.target.value)}
             fullWidth
           />
@@ -85,7 +85,7 @@ const WorkExperienceForm = () => {
             <TextField
               label="Start Date"
               type="date"
-              value={item.startDate || ''}
+          
               onChange={(e) => handleChange(index, 'startDate', e.target.value)}
               fullWidth
               InputLabelProps={{ shrink: true }}
@@ -93,7 +93,7 @@ const WorkExperienceForm = () => {
             <TextField
               label="End Date"
               type="date"
-              value={item.isPresent ? '' : item.endDate || ''}
+             
               onChange={(e) => handleChange(index, 'endDate', e.target.value)}
               fullWidth
               disabled={item.isPresent}
@@ -113,7 +113,7 @@ const WorkExperienceForm = () => {
 
           <TextField
             label="Description"
-            value={item.description || ''}
+            
             onChange={(e) => handleChange(index, 'description', e.target.value)}
             fullWidth
             multiline

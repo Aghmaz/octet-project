@@ -8,22 +8,17 @@ import Editor from "./Screens/Editor";
 import Preview from "./Screens/Preview";
 import Manage from "./Screens/Manage";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
-import { useState } from "react";
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+function App() {
   return (
     <>
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Login />} />
         <Route path="/forgot" element={<Forgot />} />
 
-        <Route element={<ProtectedRoutes user={isLoggedIn} />}>
+        <Route element={<ProtectedRoutes />}>
           <Route path="/template" element={<Template />} />
           <Route path="/editor" element={<Editor />} />
           <Route path="/preview" element={<Preview />} />
