@@ -4,7 +4,7 @@ const API_URL = 'http://localhost:5000/api/auth';
 
 // Create axios instance with credentials
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: API_URL ,
   withCredentials: true, // Important for cookies
   headers: {
     'Content-Type': 'application/json',

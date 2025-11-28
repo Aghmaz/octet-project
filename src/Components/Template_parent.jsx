@@ -8,14 +8,26 @@ import TempCard from "./Template_card.jsx";
 import temp_1 from "../images/temp_1.jpg";
 import temp_2 from "../images/temp_2.jpg";
 import temp_3 from "../images/temp_3.jpg";
+import { resumeAPI } from "../services/resume.js";
 
 export default function TemplateCards() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSelect = (templateName) => {
+  const handleSelect = async(templateName) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user._doc._id;
+    console.log(userId, "here is userId");
     dispatch(selectTemplate(templateName));
-    navigate("/editor");
+      const response = await resumeAPI.createResume({
+        userId: userId,
+        templateName: templateName,
+      });
+      if (response.success) {
+        // Store user data in localStorage
+        localStorage.setItem('resumeId', response.resume._id);
+        navigate("/editor");
+      }
   };
 
   return (
