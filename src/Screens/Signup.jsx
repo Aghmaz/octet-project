@@ -121,7 +121,7 @@ export default function Signup() {
         setSuccess('');
         
         const response = await authAPI.signup({
-          fullName: values.fullName,
+          name: values.fullName,
           email: values.email,
           password: values.password,
         });
