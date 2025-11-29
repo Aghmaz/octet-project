@@ -17,6 +17,10 @@ const api = axios.create({
     return response.data;
   },
 
+  updateResume: async (resumeData) => {
+    const response = await api.post('/update', resumeData);
+    return response.data;
+  },
   getResume: async (id) => {
           const response = await api.get(`/get/${id}`);
     return response.data;
